@@ -334,8 +334,8 @@ function getTasks(date) {
     .filter(
       (t) =>
         !t.completed &&
-        !t.checked &&
         t.due &&
+        t.status != "-" &&
         moment(t.due.toString()).isBefore(date)
     )
     .sort((t) => t.due);
