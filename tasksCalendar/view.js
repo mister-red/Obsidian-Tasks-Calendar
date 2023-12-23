@@ -382,6 +382,7 @@ function getTasks(date) {
       (t) =>
         !t.completed &&
         t.checked &&
+        t.status == "-" &&
         t.due &&
         moment(t.due.toString()).isSame(date)
     )
