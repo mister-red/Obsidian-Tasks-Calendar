@@ -507,11 +507,12 @@ function setTaskContentContainer(currentDate) {
     showTasks(overdue, "overdue");
   }
   showTasks(due, "due");
-  showTasks(recurrence, "recurrence");
-  showTasks(start, "start");
   showTasks(scheduled, "scheduled");
+  showTasks(start, "start");
   showTasks(process, "process");
+  showTasks(progress, "progress");
   showTasks(dailyNote, "dailyNote");
+  showTasks(recurrence, "recurrence");
   showTasks(done, "done");
   showTasks(cancelled, "cancelled");
   return cellContent;
