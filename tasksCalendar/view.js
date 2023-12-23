@@ -81,6 +81,7 @@ var done,
   start,
   scheduled,
   process,
+  progress,
   cancelled,
   dailyNote,
   dailyNoteRegEx;
@@ -144,6 +145,7 @@ var taskScheduledIcon = "⏳";
 var taskRecurrenceIcon = "🔁";
 var taskOverdueIcon = "⚠️";
 var taskProcessIcon = "⏺️";
+var taskProgressIcon = "⏯️";
 var taskCancelledIcon = "🚫";
 var taskStartIcon = "🛫";
 var taskDailyNoteIcon = "📄";
@@ -364,6 +366,17 @@ function getTasks(date) {
       moment(t.due.toString()).isAfter(date) &&
       moment(t.start.toString()).isBefore(date)
   );
+  progress = tasks
+    .filter(
+      (t) =>
+        !t.completed &&
+        t.checked &&
+        t.status == "/" &&
+        ((t.due && moment(t.due.toString()).isSame(date)) ||
+          (t.scheduled && moment(t.scheduled.toString()).isSame(date)) ||
+          (t.start && moment(t.start.toString()).isSame(date)))
+    )
+    .sort((t) => t.due);
   cancelled = tasks
     .filter(
       (t) =>
